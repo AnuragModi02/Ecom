@@ -13,5 +13,7 @@ namespace MyEcom.Data
         {
         }
         public DbSet<Product> products { get; set; }
+        public DbSet<ProductBrand> ProductBrands { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
     }
 }
