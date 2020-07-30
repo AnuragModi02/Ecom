@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Interfaces;
 using Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using MyEcom.Data;
@@ -12,24 +13,24 @@ namespace MyEcom.Controllers
     [Route("/api/[controller]")]
     public class ProductController : Controller
     {
-        private readonly StoreContext context;
+        private readonly IProductRepository _repo;
 
-        public ProductController(StoreContext context)
+        public ProductController(IProductRepository repo)
         {
-            this.context = context;
+            this._repo = repo;
         }
 
         [HttpGet]
-        public ActionResult<List<Product>> GetProducts()
+        public async Task<ActionResult<List<Product>>> GetProducts()
         {
-            List<Product> products = context.products.ToList();
+            IReadOnlyList<Product> products = await _repo.GetProductsAsync();
             return Ok(products);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Product> GetProduct(int id)
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
-           Product product = context.products.Find(id);
+            Product product = await _repo.GetProductAsync(id);
             return Ok(product);
         }
     }
