@@ -14,7 +14,6 @@ namespace MyEcom.Controllers
     public class ProductController : Controller
     {
         private readonly IProductRepository _repo;
-       // int pagesize = 5;
 
         public ProductController(IProductRepository repo)
         {
@@ -22,9 +21,9 @@ namespace MyEcom.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts()
+        public async Task<ActionResult<List<Product>>> GetProducts(int pages = 0)
         {
-            IReadOnlyList<Product> products = await _repo.GetProductsAsync();
+            IReadOnlyList<Product> products = await _repo.GetProductsAsync(pages);
             return Ok(products);
         }
 

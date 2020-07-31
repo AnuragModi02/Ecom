@@ -11,6 +11,7 @@ namespace MyEcom.Data
     public class ProductRepository : IProductRepository
     {
         private readonly StoreContext _context;
+        int pagesize = 5;
 
         public ProductRepository(StoreContext context)
         {
@@ -25,11 +26,13 @@ namespace MyEcom.Data
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IReadOnlyList<Product>> GetProductsAsync()
+        public async Task<IReadOnlyList<Product>> GetProductsAsync(int page)
         {
             return await _context.products
                 .Include(x => x.ProductBrand)
                 .Include(x => x.ProductType)
+                .OrderBy(x => x.Id)
+                .Skip(page*pagesize).Take(pagesize)
                 .ToListAsync();
         }
 
