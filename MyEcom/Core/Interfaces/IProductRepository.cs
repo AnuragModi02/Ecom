@@ -12,5 +12,8 @@ namespace Core.Interfaces
 
         Task<IReadOnlyList<Product>> GetProductsAsync();
 
+        Task<IReadOnlyList<ProductType>> GetProductTypeAsync();
+
+        Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync();
     }
 }

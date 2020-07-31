@@ -14,6 +14,7 @@ namespace MyEcom.Controllers
     public class ProductController : Controller
     {
         private readonly IProductRepository _repo;
+       // int pagesize = 5;
 
         public ProductController(IProductRepository repo)
         {
@@ -32,6 +33,20 @@ namespace MyEcom.Controllers
         {
             Product product = await _repo.GetProductAsync(id);
             return Ok(product);
+        }
+
+        [HttpGet("producttype")]
+        public async Task<ActionResult<List<ProductType>>> GetProductTypes()
+        {
+            IReadOnlyList<ProductType> productType = await _repo.GetProductTypeAsync();
+            return Ok(productType);
+        }
+
+        [HttpGet("productbrand")]
+        public async Task<ActionResult<List<ProductBrand>>> GetProductBrands()
+        {
+            IReadOnlyList<ProductBrand> productBrandds = await _repo.GetProductBrandsAsync();
+            return Ok(productBrandds);
         }
     }
 }
