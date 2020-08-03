@@ -32,7 +32,7 @@ namespace MyEcom.Data
                 .Include(x => x.ProductBrand)
                 .Include(x => x.ProductType)
                 .OrderBy(x => x.Id)
-                .Skip(page*pagesize).Take(pagesize)
+            //    .Skip(page*pagesize).Take(pagesize)
                 .ToListAsync();
         }
 

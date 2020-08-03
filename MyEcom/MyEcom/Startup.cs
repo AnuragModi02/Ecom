@@ -32,6 +32,10 @@ namespace MyEcom
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
             services.AddDbContext<StoreContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddScoped<IProductRepository, ProductRepository>();
 
@@ -45,6 +49,8 @@ namespace MyEcom
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(options => options.AllowAnyOrigin());
 
             app.UseSwagger();
 
