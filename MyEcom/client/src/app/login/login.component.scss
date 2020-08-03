@@ -1,0 +1,29 @@
+.login{
+    display: grid;
+    justify-content: center;
+}
+.form{
+    height: 500px;
+    width: 500px;
+    border: 1px solid black;
+    margin-top: 200px;
+    display: grid;
+    padding: 20px;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+.mat{
+    grid-row: 1/2;
+    width: 100%;
+}
+.matpass{
+    grid-row: 2/3;
+}
+.matcheck{
+    grid-row: 4/4;
+}
+.button{
+    width: 100px;
+    height: 50px;
+    margin: auto;
+}
+

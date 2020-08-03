@@ -1,0 +1,51 @@
+<div class="row" style="height: 100%;">
+    
+    <div class="column left">
+        <div>
+            <h2 style="padding-left: 15px;">Product type</h2>
+        </div>
+        <div>
+            <ul class="list-group" style="padding: 10px;" *ngFor="let pt of producttype">
+                <li class="list-group-item" value="{{pt.id}}" (click)="selectproducttype(pt.id)" [class.active] ="pt.id===ProductTypeSelected" #temp>
+                    {{pt.name}}
+                </li>
+             </ul>
+             <ul style="padding:10px">
+                 <li class="list-group-item" value="0" (click)="selectproducttype(ref.value)" #ref [class.active]="isActive">ALL</li>
+             </ul>
+        </div>
+    </div>
+
+    <div class="column right">
+
+        <div class="search" style="width: 100%;">
+          <input type="text" placeholder="Search" >
+          <button mat-fab color="primary" class="shopbutton" (click)="Checkout()">
+            <mat-icon [matBadge]="noofitems" matBadgeColor="warn">shopping_cart</mat-icon>
+          </button>           
+        </div>
+        <div class="products">
+        <div *ngFor="let product of filterproducts" style="margin-top: 10px;">
+            <div class="card mb-6 shadow-sm">
+              <img src="assets/{{product.pictureUrl}}" class="img-fluid">
+              <div class="card-body" style="display: flex;">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button mat-flat-button color="warn" (click)="Addtocart(product.id,quantity.value)">
+                      <mat-icon>shopping_cart</mat-icon>
+                    </button>
+                  </div>                                  
+                </div>
+                <div style="width: 20px;">
+                  <mat-form-field class="example-form-field" style="width: 80px;padding-left: 30px;">
+                    <mat-label>Quantity</mat-label>
+                    <input matInput type="text" #quantity>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>

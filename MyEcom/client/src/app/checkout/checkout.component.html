@@ -1,0 +1,33 @@
+<mat-tab-group>
+
+  <mat-tab label="First">  
+    <mat-table *ngIf="products" [dataSource]="products" class="mat-elevation-z8" #mattable>
+ 
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef style="background-color: blanchedalmond;"> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef style="background-color: blanchedalmond;"> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element" #price> {{element.price}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Quantity">
+        <mat-header-cell *matHeaderCellDef style="background-color: blanchedalmond;"> Quantity </mat-header-cell>
+        <mat-cell *matCellDef="let element" #quan> x{{element.Quantity}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Final Price">
+        <mat-header-cell *matHeaderCellDef style="background-color: blanchedalmond;"> Final Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.finalprice}} </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-tab>
+ 
+
+  <mat-tab label="Second"> Content 2 </mat-tab>
+</mat-tab-group>
