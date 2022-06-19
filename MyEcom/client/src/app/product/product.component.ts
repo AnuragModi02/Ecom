@@ -62,7 +62,6 @@ export class ProductComponent implements OnInit{
 
   Addtocart(productid: number, value: number): void{
     this.noofitems = this.noofitems + 1;
-    console.log(productid);
     this.productselect.push({'id': productid, 'quantity': value});
     console.log(this.productselect);
   }

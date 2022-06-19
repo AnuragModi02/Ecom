@@ -18,7 +18,8 @@ namespace MyEcom.Data
             {
                 if(!context.ProductBrands.Any())
                 {
-                    var brandsData = File.ReadAllText("C:\\Users\\anura\\source\\repos\\Ecom\\MyEcom\\MyEcom\\Data\\SeedData\\brands.json");
+                    //var brandsData = File.ReadAllText("C:\\Users\\anura\\source\\repos\\Ecom\\MyEcom\\MyEcom\\Data\\SeedData\\brands.json");
+                    var brandsData = File.ReadAllText(".\\Data\\SeedData\\brands.json");
 
                     var brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandsData);
 
@@ -31,7 +32,8 @@ namespace MyEcom.Data
                 }
                 if (!context.ProductTypes.Any())
                 {
-                    var producttype = File.ReadAllText("C:\\Users\\anura\\source\\repos\\Ecom\\MyEcom\\MyEcom\\Data\\SeedData\\types.json");
+                    //var producttype = File.ReadAllText("C:\\Users\\anura\\source\\repos\\Ecom\\MyEcom\\MyEcom\\Data\\SeedData\\types.json");
+                    var producttype = File.ReadAllText(".\\Data\\SeedData\\types.json");
 
                     var type = JsonSerializer.Deserialize<List<ProductType>>(producttype);
 
@@ -44,7 +46,8 @@ namespace MyEcom.Data
                 }
                 if (!context.products.Any())
                 {
-                    var products = File.ReadAllText("C:\\Users\\anura\\source\\repos\\Ecom\\MyEcom\\MyEcom\\Data\\SeedData\\products.json");
+                    //var products = File.ReadAllText("C:\\Users\\anura\\source\\repos\\Ecom\\MyEcom\\MyEcom\\Data\\SeedData\\products.json");
+                    var products = File.ReadAllText(".\\Data\\SeedData\\products.json");
 
                     var productlist = JsonSerializer.Deserialize<List<Product>>(products);
 

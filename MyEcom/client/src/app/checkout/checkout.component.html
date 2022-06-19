@@ -20,7 +20,7 @@
 
       <ng-container matColumnDef="Final Price">
         <mat-header-cell *matHeaderCellDef style="background-color: blanchedalmond;"> Final Price </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.finalprice}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.finalprice | currency:'INR':'symbol'}} </mat-cell>
       </ng-container>
     
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
